@@ -1,12 +1,15 @@
 import router from 'express'
-import { listBooks } from '../controllers/book.js'
+import { deleteBook, getBooks, listBooks, updateBook } from '../controllers/book.js'
 
 
 const routerExpress = router()
 
 
 routerExpress.get('/', listBooks)
-
+routerExpress.get('/',listBooks)
+routerExpress.get('/:id', getBooks)
+routerExpress.put("/:id", updateBook) 
+routerExpress.delete("/:id", deleteBook)
 
 export default routerExpress
 // module.exports= router
