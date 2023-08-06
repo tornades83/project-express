@@ -3,6 +3,7 @@ import cors from 'cors'
 import morgan from "morgan";
 import routes from './routes/index.js'
 
+
 const PORT = 80;
 
 var app = express();
@@ -10,6 +11,7 @@ var app = express();
 app.use(cors())
 app.use(morgan('dev'));
 app.use(express.json())
+
 app.use('/api' , routes)
 
 app.listen(PORT, function () {
