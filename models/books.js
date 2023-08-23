@@ -1,20 +1,20 @@
-import {Schema, model} from 'mongoose'
+import mongoose from "mongoose";
 
 
-
- export const books = new Schema({
-    id:{ type: Number, min: 1, index: true },
-    author: { type: String, default: 'hahaha' },
-    titre: { type: String, default: 'hahaha' },
-    price: { type: Number, min: 1, index: true },
-    publication: { type: String, default: 'hahaha' },
-    description:  { type: String, default: 'hahaha' },
-    types:  { type: String, default: 'hahaha' },
+const bookSchema = new mongoose.Schema({
+    id:{ bsonType:"objecId",required:true  },
+    author: {type:String, default:""},
+    titre: {type:String, default:""},
+    price: {type:Number, default:0},
+    rentBy: {
+      type:[mongoose,Schema.Type.ObjectId],
+      ref: "user"
+    },
+    publication: {type:String, default:""},
+    description:  {type:String, default:""},
+    types:  {type:String, default:""},
     date: { type: Date, default: Date.now },
     buff: Buffer
   });
-  const booksModel =new model('book',books)
-
-
- 
-  module.exports = booksModel;
+  export const book = mongoose.model('book', bookSchema, 'books');
+  export default book;
